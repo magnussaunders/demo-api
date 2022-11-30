@@ -26,7 +26,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: ./nestjs/
           file: ./nestjs/Dockerfile.nestjs
           push: true
           tags: magnussaunders/demo-api:nestjs
