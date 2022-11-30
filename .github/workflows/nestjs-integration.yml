@@ -17,11 +17,11 @@ jobs:
         with:
           node-version: 16.16.0
           cache: npm
-          cache-dependency: ./nestjs/package-lock.json
+          cache-dependency-path: ./nestjs/package-lock.json
 
       - name: Install Dependencies
         working-directory: nestjs
-        run: npm install -prod
+        run: npm install
 
 
       - name: Run linting test
@@ -39,11 +39,11 @@ jobs:
         with:
           node-version: 16.16.0
           cache: npm
-          cache-dependency: ./nestjs/package-lock.json
+          cache-dependency-path: ./nestjs/package-lock.json
 
       - name: Install Dependencies
         working-directory: nestjs
-        run: npm install -prod
+        run: npm install
 
       - name: Run unit tests
         working-directory: nestjs
