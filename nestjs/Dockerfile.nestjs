@@ -1,3 +1,9 @@
+ENV mongo_db_host=localhost
+ENV mongo_db_port=27017
+ENV mongo_db_db=test
+ENV mongo_db_username=mongo
+ENV mongo_db_password=mongo
+
 FROM node:16.16-alpine as build
 WORKDIR /usr/src/app
 COPY package*.json ./
