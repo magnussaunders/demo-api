@@ -7,7 +7,7 @@ import { ConfigModule } from '@nestjs/config';
 import {DirectoryModule} from "./directory/directory.module";
 
 @Module({
-  imports: [ConfigModule.forRoot(), UserModule, DirectoryModule, MongooseModule.forRoot(`mongodb://${process.env.mongo_db_username}:${process.env.mongo_db_password}@${process.env.mongo_db_host}:${process.env.mongo_db_port}/${process.env.mongo_db_db}?authMechanism=DEFAULT`)],
+  imports: [ConfigModule.forRoot(), UserModule, DirectoryModule, MongooseModule.forRoot(`mongodb://${process.env.MONGO_DB_USERNAME}:${process.env.MONGO_DB_PASSWORD}@${process.env.MONGO_DB_HOST}:${process.env.MONGO_DB_PORT}/${process.env.MONGO_DB_DB}?authMechanism=DEFAULT`)],
   controllers: [AppController],
   providers: [AppService],
 })
