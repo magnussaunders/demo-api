@@ -1,6 +1,4 @@
 export interface Directory {
-    id?: string
-    did: string
+    _id?: string
     directoryName: string
-    childrenDirectories: Directory[]
 }
