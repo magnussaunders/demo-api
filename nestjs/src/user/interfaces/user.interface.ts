@@ -1,3 +1,5 @@
+import {Entitlement} from "../../common/interfaces/entitlement.interface";
+
 export interface User {
     id?: string
     uid: string
@@ -8,8 +10,5 @@ export interface User {
     dateOfBirth: Date
     parentContainer: string
     roles: string[]
-    entitlements: [{
-        containerId: string
-        accessLevel: string
-    }]
+    entitlements: Entitlement[]
 }

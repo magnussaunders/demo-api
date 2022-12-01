@@ -11,8 +11,5 @@ export let UserSchema = new mongoose.Schema({
     roles: [{
         roleId: String
     }],
-    entitlements: [{
-        containerId: String,
-        accessLevel: String
-    }]
+    entitlements: []
 })
