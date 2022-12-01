@@ -3,10 +3,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import {UserModule} from "./user/user.module";
 import { MongooseModule } from "@nestjs/mongoose";
-import config from './config';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [UserModule, MongooseModule.forRoot(config.mongo_connection_string)],
+  imports: [ConfigModule.forRoot(), UserModule, MongooseModule.forRoot(`mongodb://${process.env.mongo_db_username}:${process.env.mongo_db_password}@${process.env.mongo_db_host}:${process.env.mongo_db_port}/${process.env.mongo_db_db}?authMechanism=DEFAULT`)],
   controllers: [AppController],
   providers: [AppService],
 })
