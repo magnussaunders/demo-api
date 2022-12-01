@@ -1,3 +1,3 @@
 export default {
-    mongo_connection_string: 'mongodb://nestjs:thisisNest123@localhost:27017/demo-api-db?authMechanism=DEFAULT'
+    mongo_connection_string: `mongodb://${process.env.mongo_db_username}:${process.env.mongo_db_password}@${process.env.mongo_db_host}:${process.env.mongo_db_port}/${process.env.mongo_db_db}?authMechanism=DEFAULT`
 }
