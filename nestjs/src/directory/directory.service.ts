@@ -7,6 +7,10 @@ import {Directory} from "./interfaces/directory.interface";
 export class DirectoryService {
     constructor(@InjectModel('Directory') private readonly directoryModel: Model<Directory>) {}
 
+    async getAllDirectories(): Promise<Directory[]> {
+        return await this.directoryModel.find()
+    }
+
     async getDirectory(directoryId: string): Promise<Directory> {
         return await this.directoryModel.findById(directoryId)
     }
@@ -15,8 +19,8 @@ export class DirectoryService {
         return await this.directoryModel.create(directory)
     }
 
-    async updateDirectory(directory: Directory): Promise<Directory> {
-        return await this.directoryModel.findByIdAndUpdate(directory._id, directory)
+    async updateDirectory(directoryId:string, directory: Directory): Promise<Directory> {
+        return await this.directoryModel.findByIdAndUpdate(directoryId, directory)
     }
 
     async deleteDirectory(directoryId: string): Promise<string> {
