@@ -5,6 +5,6 @@ export interface Group {
     _id?: string
     groupName: string
     directoryId: string
-    user: User[]
+    users: User[]
     entitlements: Entitlement[]
 }
