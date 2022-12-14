@@ -7,8 +7,19 @@ export class GroupController {
     constructor(private readonly groupService: GroupService) {
     }
 
-    @Get('getAllGroups')
-    getAllGroups(): Promise<Group[]> {
+    // TODO: Improve endpoint paths. Follow the restful standards. GetAllGroups -> /group; GetGroupById -> /group/:groupId; GetGroupsByFilter -> /group/filter?name=sdsdsds; CreateGroup -> PUT /group
+    @Get('filter')
+    getAllGroups(query): Promise<Group[]> {
+        // TODO: Below filters out null values
+        const filterQuery = Object.assign({}, query)
+
+        Object.keys(filterQuery).forEach(key => {
+            if (!filterQuery[key]) {
+                delete filterQuery[key]
+            }
+        })
+
+        // Filter groups
         return this.groupService.getAllGroups()
     }
 
@@ -37,7 +48,7 @@ export class GroupController {
         return this.groupService.deleteGroup(params.groupId)
     }
 
-    @Post(':groupId/addUserToGroup/:userId')
+    @Post(':groupId/addUser/:userId')
     addUserToGroup(@Param() params): Promise<string> {
         return this.groupService.addUserToGroup(params.groupId, params.userId)
     }

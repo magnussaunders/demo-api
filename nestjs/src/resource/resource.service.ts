@@ -28,6 +28,7 @@ export class ResourceService {
     }
 
     async deleteResource(resourceId: string): Promise<string> {
+        // TODO: Return the error for error handling
         if (await this.resourceModel.findByIdAndRemove(resourceId)) {
             return `Resource ${resourceId} was deleted`
         } else {

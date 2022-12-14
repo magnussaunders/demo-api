@@ -28,6 +28,7 @@ export class GroupService {
     }
 
     async addUserToGroup(groupId: string, userId: string): Promise<string> {
+        // TODO: Add error handling
         let group = await this.groupModel.findById(groupId)
 
         for (let user of group.users) {
@@ -38,7 +39,8 @@ export class GroupService {
 
         group.users.push(userId)
 
-        if (await this.groupModel.findByIdAndUpdate(groupId, group)) {
+        const result = await this.groupModel.findByIdAndUpdate(groupId, group)
+        if (result) {
             return `User ${userId} has been added to group ${groupId}`
         } else {
             return `User ${userId} could not be added to group ${groupId}`
@@ -48,7 +50,10 @@ export class GroupService {
     async removeUserFromGroup(groupId: string, userId: string) {
         let group = await this.groupModel.findById(groupId)
 
-        if (group.users.filter(user => user === userId).length !== 0) {
+        // TODO: Separate duplicated logic into a separate function
+        // TODO: Assign results to a descriptive variable so that it is more readable. When reading the code, you don't need to analyze what the code is doing, you can look at the variable name
+        const matchingUsers = group.users.filter(user => user === userId)
+        if (matchingUsers.length !== 0) {
             group.users = group.users.filter(user => user !== userId)
 
             if (await this.groupModel.findByIdAndUpdate(groupId, group)) {
